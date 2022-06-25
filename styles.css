@@ -1,0 +1,294 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.bodyCenter {
+    background-color: #002c37;
+    color: white;
+    position: relative;
+    text-align: center;
+}
+.bodyCenter:before {
+    content: "";
+    position: relative;
+    float: left;
+    width: 0;
+    height: 100%;
+    vertical-align: top;
+}
+.wrapperCenter {
+    float: left;
+    vertical-align: top;
+}
+
+.mailHelloWorld {
+    width: 30%;
+    margin-top: 30px;
+}
+
+.mainPhoto {
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.handPhoto {
+    width: 30px;
+    margin-left: -1%;
+}
+
+.mainDescription {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+#nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #003c4b;
+    border-radius: 10px;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 126, 157, 0.05) 1%,
+        rgba(0, 69, 86, 0.488) 45%,
+        rgba(0, 44, 55, 0.053658963585434205) 100%
+    );
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.nav-link {
+    display: inline-block;
+    font-size: 22px;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+
+.nav-link:hover {
+    color: #007bb6;
+    border-radius: 10px;
+}
+
+.category-separation {
+    margin-top: 120px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    margin-inline: 50px;
+}
+
+.title {
+    font-size: 25px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-image: linear-gradient(
+        90deg,
+        rgba(13, 13, 13, 0.05) 0%,
+        rgba(96, 95, 95, 0.488) 35%,
+        rgba(13, 13, 13, 0.053658963585434205) 100%
+    );
+}
+
+.portfolio-container {
+    margin-top: -60px;
+}
+
+.portfolio-images-container {
+    margin-top: 4vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 2px;
+}
+
+.portfolio-images-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px;
+    max-width: 500px;
+}
+
+.portfolio-images-container div a:hover {
+    color: black;
+}
+
+.portfolio-images-container div a img:hover {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.817);
+}
+
+.portfolio-images-container a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #fff3f3;
+}
+
+.portfolio-container h4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+}
+
+.img-portfolio {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.6);
+}
+
+.skills-learning-icons-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -50px;
+}
+
+.skills-learning-icons-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.skills-learning-icons-container div img {
+    width: 100%;
+    max-width: 100px;
+    margin-right: 10px;
+    background-color: rgba(101, 101, 101, 0.098);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.skills-learning-icons-container div p {
+    /* <---Pendiente */
+    opacity: 0;
+}
+
+/*
+.skills-learning-icons-container div img:hover {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.817);
+}
+*/
+
+.skills-learning-icons-container div p:hover {
+    /*<---Pendiente */
+    opacity: 1;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+}
+
+.contact-section {
+    margin-top: 0%;
+    margin-bottom: 5%;
+}
+
+.img-contacto {
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
+.img-contacto:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.817);
+    border-radius: 10px 10 11px 10px;
+}
+
+.icon-container {
+    position: relative;
+}
+
+.icon {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+}
+
+.skill-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 80%;
+    height: 0%;
+    opacity: 0.3;
+    transition: 0.3s ease-in-out;
+}
+
+.icon-container:hover .skill-overlay {
+    height: 120%;
+    opacity: 1;
+}
+
+.skill-text {
+    white-space: nowrap;
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    overflow: hidden;
+    top: 1%;
+    left: 40%;
+    transform: translate(-50%, -10%);
+    -ms-transform: translate(110%, -150%);
+}
+
+#myBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #003c4b; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
