@@ -9,7 +9,8 @@
     <meta charset="UTF-8">
  </head>
  <body class="bodyCenter">
-    <div class="wrapperCenter"></div>
+    <div class="wrapperCenter" id="topW"></div>
+        <div id="top"></div>
         <img class="mainHelloWorld" src="../Assets/helloWorldCR31000w.png"> 
         <br>
         <img class="mainPhoto" src="../Assets/IMG_0293cropCorRad800.png"> 
@@ -17,89 +18,89 @@
         <h2><img class="handPhoto" src="../Assets/hand.gif"> Hello there! </h2>
         <h3>My name is Joaquin Segovia</h3>
         <div class="mainDescription">        
-            <p>🇬🇧 I work as a full stack software developer, currently at K2B, where I use GeneXus technology to build enterprise software. 
+            <p>💻 I work as a full stack software developer, currently at K2B, where I use GeneXus technology to build enterprise software. 
             <br><br>&#128205;I'm based on Montevideo, Uruguay
-            <br>&#128640;At present, I'm on advance road to get my Software Engineer Bachelor Degree, at "Universidad de la Empresa"
+            <br><br>&#128640;At present, I'm on advance road to get my Software Engineer Bachelor Degree, at "Universidad de la Empresa"
             <br><br>Also, I like topics and I'm an autodidact about UI/UX/Multimedia/Graphics/Marketing/Designing
             <br><br>You can know more about me on
             </p>
             <a href="https://uy.linkedin.com/in/joaquinsegovia"><img src="../Assets/LinkedinIcon.png" alt="Linkedin" style="height: 20px;"></a>
             <a href="https://github.com/joasegovia9427"><img src="../Assets/GitHubIcon.png" alt="GitGub" style="height: 20px;"></a>
+            <br><br><br><br>
         </div>
 
 
     </div>
-
-    <nav id="nav">
-        <a href="#portfolio" class="nav-link">Portfolio</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#other-skills" class="nav-link">Other Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
-    </nav>
+    
+    <div id="navbar" class="navbar" style="margin-bottom: -100px;">
+        <a href="#portfolio" class="navbar-link">Portfolio</a>
+        <a href="#skills" class="navbar-link">Skills</a>
+        <a href="#other-skills" class="navbar-link">Other Skills</a>
+        <a href="#contact" class="navbar-link">Contact</a>
+        <a href="#topW" class="navbar-link">Top</a>
+    </div>
   
-
-    <div class="category-separation">
+    <div class="category-separation" id="portfolio">
+        <br><br>
         <div class="category-container">
-            <p class="title" id="portfolio">PORTFOLIO</p>
+            <p class="title">PORTFOLIO</p>
         </div>
         <hr>
         <section class="portfolio-container">
             <div class="portfolio-images-container">
                 <div>
-                    <a href="https://github.com/joasegovia9427/MyEasyCryptoManager" class="titulos-img-portfolio">My Easy Crypto Manager</a>
-                    <h4> A Crypto asset tracker/manager app. Created using Swift, SwiftUI, Rest API and Core Haptics to access the haptics engine.</h4>
-                    <a href="https://github.com/joasegovia9427/MyEasyCryptoManager">
-                        <img src="https://media.giphy.com/media/2mKfZnSqtfA9ZQQBuk/giphy.gif" alt="My easy crypto manager" class="img-portfolio">
+                    <a href="https://github.com/joasegovia9427/MeliProductos" class="titulos-img-portfolio">Meli Products</a>
+                    <h4> A search-buy product app. Created using Swift, SwiftUI and Rest API. An App where you can find product and see its detail, in a huge catalog. The user can search and view the detail of a particular product. The technology used are SwiftUI as a visual framework and MV as an architecture pattern.</h4>
+                    <div class="for-vertical-gif">
+                        <a href="https://github.com/joasegovia9427/MeliProductos">
+                            <img src="../Assets/projects/DemoRotationKeepState.gif" alt="Meli Products" class="img-portfolio-vertical-gif">
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="https://github.com/joasegovia9427/GameStream" class="titulos-img-portfolio">GameStream</a>
+                    <h4>iOS app created following two of the Platzi's courses. Built using SwiftUI, UserDefaults, API REST, AVkit and third party libraries. With the goal of get it done in code with SwiftUI Apple's library. This is to practice both Platzi's online courses. In this app, you can find videos about videogame's digital content. Also, you can share your reviews and vote for your favourites videogames.</h4>
+                    <a href="https://github.com/joasegovia9427/GameStream">
+                        <img src="../Assets/projects/gameStream.png" alt="GameStream" class="img-portfolio">
                     </a>
                 </div>
 
                 <div>
-                    <a href="https://github.com/joasegovia9427/AppCine" class="titulos-img-portfolio">AppCine iOS</a>
-                    <h4> Social network movie app for iOS, Created using Swift, SwiftUI, REST API, Firebase Services, and third party libraries.</h4>
-                    <a href="https://github.com/joasegovia9427/AppCine">
-                        <img src="https://media.giphy.com/media/eMgmrT1rxyRkTdrEJH/giphy.gif" alt="App Cine iOS" class="img-portfolio">
-                    </a>
-                </div>
-
-                <div>
-                    <a href="https://github.com/joasegovia9427/game-stream" class="titulos-img-portfolio">GameStream</a>
-                    <h4> iOS app created following a practical course by Platzi. Built using SwiftUI, UserDefaults, API REST, AVkit and third party libraries </h4>
-                    <a href="https://github.com/joasegovia9427/game-stream">
-                        <img src="https://media.giphy.com/media/Y2WKBknYnsNkPFOb7N/giphy.gif" alt="GameStream" class="img-portfolio">
+                    <a href="https://github.com/joasegovia9427/oblig_csharp_2021_frontend_web" class="titulos-img-portfolio">Music Management</a>
+                    <h4>A full stack app. Using Angular JS with TypeScript to build the frontEnd, hosting in Node. APIs to get data from backend in .Net. MySql as a BDMS. In this project Material Design for components was used. This app allows to achieve CRUD of mains entities like Bands, Songs, Albums and Singers. An user authentication management, too.</h4>
+                    <a href="https://github.com/joasegovia9427/oblig_csharp_2021_frontend_web">
+                        <img src="../Assets/projects/DemoAngular.gif" alt="Music Management" class="img-portfolio">
                     </a>
                 </div>
                 
                 <div>
-                    <a href="https://github.com/joasegovia9427/FormularioDeRegistroReactivo-SwiftUI" class="titulos-img-portfolio">Sign up form</a>
-                    <h4> Reactive signup form. It created using SwiftUI</h4>
-                    <a href="https://github.com/joasegovia9427/FormularioDeRegistroReactivo-SwiftUI">
-                        <img src="https://media.giphy.com/media/d8BiIeFSkNzz7zlbvl/giphy.gif" alt="Formulario reactivo SwiftUI" class="img-portfolio">
+                    <a href="https://github.com/joasegovia9427/languageClosureCalculatorApp" class="titulos-img-portfolio">languageClosureCalculatorApp</a>
+                    <h4>You can add 4 chains, and toggle if you want a common "closure" or a positive "closure", about one "language". After that, you just tap over RUN button. It will be display the result below and a text field in case you want to select part of it. Also, you have got a COPY button, to save in device's clipboard all the result.</h4>
+                    <a href="https://github.com/joasegovia9427/languageClosureCalculatorApp">
+                        <img src="../Assets/projects/languageClosureCalculatorApp.png" alt="languageClosureCalculatorApp" class="img-portfolio">
                     </a>
                 </div>
 
                 <div>
-                    <a href="https://github.com/JanoLiberona/AppCine" class="titulos-img-portfolio">AppCine</a>
-                    <h4> A social network movie app for Android. Created using Java, Room, API REST and Firebase Services</h4>
-                    <a href="https://github.com/JanoLiberona/AppCine">
-                        <img src="https://media.giphy.com/media/bhyy3HjKhKMIt3oncC/giphy.gif" alt="AppCine" class="img-portfolio">
+                    <a href="https://github.com/joasegovia9427?tab=repositories" class="titulos-img-portfolio">others minors projects</a>
+                    <h4>I'll probably upload more awesome project soon ;) Stay tuned to know them... For now, you can see others old projects that I was working in all my path.</h4>
+                    <a href="https://github.com/joasegovia9427?tab=repositories">
+                        <img src="../Assets/projects/matrix.gif" alt="AppCine" class="img-portfolio">
                     </a>
+                    <p>by the way... y love the 5 Matrix films... yes, I count 'Animatrix' :P...</p>
                 </div>
 
-                <div>
-                    <a href="https://j-kobu.github.io/ListaDeTareas-Javascript/#/" class="titulos-img-portfolio">To do list</a>
-                    <h4> Basic to do list app. It created using html, css, and javascript</h4>
-                    <a href="https://j-kobu.github.io/ListaDeTareas-Javascript/#/">
-                        <img src="https://media.giphy.com/media/ZvNPFbrtuoHZZu2Xsx/giphy.gif" alt="Lista de tareas" class="img-portfolio">
-                    </a>
-                </div>
+
                 
             </div>
         </section>
     </div>
 
-    <div class="category-separation">
+    <div class="category-separation" id="skills">
+        <br><br>
         <div class="category-container">
-            <p class="title" id="main-skill-set">SKILLS</p>
+            <p class="title">SKILLS</p>
         </div>
         <hr>
         <section class="skills-learning-container">
@@ -171,9 +172,10 @@
         </section>
     </div>
 
-    <div class="category-separation">
+    <div class="category-separation" id="other-skills">
+        <br><br>
         <div class="category-container">
-            <p class="title" id="other-skills">OTHER SKILLS</p>
+            <p class="title">OTHER SKILLS</p>
         </div>
         <hr>
         <section class="skills-learning-container">
@@ -218,6 +220,7 @@
     </div>
 
     <div class="category-separation">
+        <br><br>
         <div class="category-container">
             <p class="title" id="contact">CONTACT</p>
         </div>
