@@ -36,11 +36,7 @@ function topFunction() {
 }
 
 
-
-
-console.log("If you get here, thanksk")
-console.log("This is my resume...")
-console.log("Contact with me")
-
-console.log('%c If you get here thanks in advance!!', 'font-weight: bold; font-size: 50px;color: red; text-shadow: 3px 3px 0 rgb(217,31,38) , 6px 6px 0 rgb(226,91,14) , 9px 9px 0 rgb(245,221,8) , 12px 12px 0 rgb(5,148,68) , 15px 15px 0 rgb(2,135,206) , 18px 18px 0 rgb(4,77,145) , 21px 21px 0 rgb(42,21,113)');
-console.log("%cThis is my linkedIn resume...","color: green; font-family:sans-serif; font-size: 20px");
+const style = 'background: #002c37; color: white;font-family: "Courier New", Courier, monospace;font-size: 20px;letter-spacing: 3px;word-spacing: 6px;font-weight: 700;text-decoration: none;font-style: italic;font-variant: normal;text-transform: none;';
+console.log('%c If you get here thanks in advance!!', style);
+console.log("%cThis is my LinkedIn resume... https://www.linkedin.com/in/joaquinsegovia/", style);
+console.log("%cThis is my GitHub profile... https://github.com/joasegovia9427", style);
