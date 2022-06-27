@@ -544,4 +544,14 @@ h4 {
         width: 80% !important;
         max-width: 80% !important;
     }
+
+    .navbar-link {
+        font-size: 50px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .title {
+        margin-top: 230px !important;
+    }
 }
