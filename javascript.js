@@ -40,3 +40,4 @@ const style = 'background: #002c37; color: white;font-family: "Courier New", Cou
 console.log('%c If you get here thanks in advance!!', style);
 console.log("%cThis is my LinkedIn resume... https://www.linkedin.com/in/joaquinsegovia/", style);
 console.log("%cThis is my GitHub profile... https://github.com/joasegovia9427", style);
+console.log('%c v.1.0.3 - 2022/06/27', style);
