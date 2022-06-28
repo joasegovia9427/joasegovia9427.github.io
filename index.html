@@ -7,8 +7,76 @@
             <link rel="stylesheet" type="text/css" href="styles.css" />
             <script src="javascript.js"></script>
             <meta charset="UTF-8" />
+            <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+            <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+            />
         </head>
         <body class="bodyCenter">
+            <button onclick="menuFunction()" id="myBtnMenu" title="Menu">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="menu-full-screen" id="menu-full-screen">
+                <div class="menu-box">
+                    <ul class="ul-lista">
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#experience"
+                                class="menu-navbar-link"
+                                >Experience</a
+                            >
+                        </li>
+                        <hr />
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#portfolio"
+                                class="menu-navbar-link"
+                                >Portfolio</a
+                            >
+                        </li>
+                        <hr />
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#skills"
+                                class="menu-navbar-link"
+                                >Skills</a
+                            >
+                        </li>
+                        <hr />
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#other-skills"
+                                class="menu-navbar-link"
+                                >Other Skills</a
+                            >
+                        </li>
+                        <hr />
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#contact"
+                                class="menu-navbar-link"
+                                >Contact</a
+                            >
+                        </li>
+                        <hr />
+                        <li>
+                            <a
+                                onclick="menuFunction()"
+                                href="#upAll"
+                                class="menu-navbar-link"
+                                >Top</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="wrapperCenter" id="upAll"></div>
             <div id="top"></div>
             <img

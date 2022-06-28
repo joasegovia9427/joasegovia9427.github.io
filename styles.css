@@ -406,6 +406,11 @@ h4 {
     margin: 0 10px;
 }
 
+.menu-full-screen,
+#myBtnMenu {
+    display: none;
+}
+
 @media only screen and (max-width: 1100px) and (orientation: portrait) {
     .mainHelloWorld {
         width: 90%;
@@ -553,5 +558,63 @@ h4 {
 
     .title {
         margin-top: 230px !important;
+    }
+
+    /* ================= */
+    .navbar {
+        display: none !important;
+    }
+    #myBtnMenu {
+        display: block;
+        position: fixed; /* Fixed/sticky position */
+        top: 20px; /* Place the button at the bottom of the page */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 98; /* Make sure it does not overlap */
+        border: none; /* Remove borders */
+        outline: none; /* Remove outline */
+        color: white; /* Text color */
+        cursor: pointer; /* Add a mouse pointer on hover */
+        padding: 15px; /* Some padding */
+        border-radius: 10px; /* Rounded corners */
+        background: linear-gradient(
+            90deg,
+            rgba(0, 44, 55, 0.05) 0%,
+            rgba(0, 69, 86, 0.488) 50%,
+            rgba(0, 44, 55, 0.053658963585434205) 100%
+        );
+        font-size: 40px; /* Increase font size */
+        width: 30% !important;
+        height: 150px !important;
+    }
+    .menu-full-screen {
+        background: linear-gradient(
+            90deg,
+            rgba(0, 44, 55, 0.05) 0%,
+            rgba(0, 69, 86, 0.488) 50%,
+            rgba(0, 44, 55, 0.053658963585434205) 100%
+        );
+        z-index: 89;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: var(--black);
+        overflow: hidden !important;
+    }
+
+    .menu-box {
+        background-color: #002c37;
+        color: white;
+        width: 100% !important;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        padding: 10%;
+        font-weight: bold;
+        font-size: 90px !important;
+    }
+    .menu-navbar-link {
+        color: white;
+        text-decoration: none;
+        text-align: center;
     }
 }
