@@ -67,4 +67,4 @@ console.log(
     "%cThis is my GitHub profile... https://github.com/joasegovia9427",
     style
 );
-console.log("%c v.2.0.0 - 2022/10/11", style);
+console.log("%c v.2.0.1 - 2022/10/24", style);
