@@ -619,3 +619,11 @@ h4 {
         text-align: center;
     }
 }
+
+.center-github-snake {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    flex-direction: column;
+}
