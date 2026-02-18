@@ -1,0 +1,26 @@
+{
+  "name": "joasegovia9427.github.io",
+  "version": "1.0.0",
+  "description": "Joaquin Segovia's portfolio and personal profile web",
+  "main": "javascript.js",
+  "scripts": {
+    "start": "npx serve .",
+    "format": "prettier --write \"**/*.{html,css,js}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joasegovia9427/joasegovia9427.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/joasegovia9427/joasegovia9427.github.io/issues"
+  },
+  "homepage": "https://github.com/joasegovia9427/joasegovia9427.github.io#readme",
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}
