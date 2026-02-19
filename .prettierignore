@@ -1,0 +1,23 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Production
+dist
+build
+
+# Astro
+.astro
+
+# Lockfiles
+pnpm-lock.yaml
+
+# Misc
+.DS_Store
+*.log
+coverage
+.env
+.env.local
+
+# CSS files (Tailwind v4 syntax compatibility)
+*.css

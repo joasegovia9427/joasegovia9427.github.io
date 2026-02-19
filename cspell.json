@@ -1,0 +1,24 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "eslint",
+    "joasegovia",
+    "pnpm",
+    "tailwindcss",
+    "tsconfig",
+    "Vite",
+    "nvmrc",
+    "nvm",
+    "astro"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "build",
+    "*.log",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    ".astro"
+  ]
+}
