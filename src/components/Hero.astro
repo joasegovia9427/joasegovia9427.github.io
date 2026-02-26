@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import { getIcon } from '../utils/iconMapper';
+import { getEntry } from 'astro:content';
+
+const heroEntry = await getEntry('hero', 'index');
+
+if (!heroEntry) {
+  throw new Error('Hero entry not found');
+}
+
+const { name, title, location, description, socialLinks, avatar } =
+  heroEntry.data;
+---
+
+<section class='hero min-h-screen'>
+  <div class='hero-content max-w-7xl flex-col lg:flex-row-reverse'>
+    <div class='hover-3d'>
+      <figure class='mask mask-squircle w-48 max-w-100 lg:w-64'>
+        {
+          typeof avatar === 'string' ? (
+            <img src={avatar} alt={name} />
+          ) : (
+            <Image src={avatar} alt={name} />
+          )
+        }
+      </figure>
+
+      {Array.from({ length: 8 }).map(() => <div />)}
+    </div>
+
+    <div class='max-w-2xl text-center lg:text-left'>
+      <h1 class='mb-4 text-4xl font-bold lg:text-5xl'>
+        Hi, I'm {name}
+      </h1>
+      <p class='skeleton skeleton-text text-base-content/80 mb-2 text-xl'>
+        {title}
+      </p>
+      {location && <p class='text-base-content/60 mb-4'>{location}</p>}
+      <p class='mb-6 text-lg leading-relaxed'>
+        {description}
+      </p>
+      <div
+        class='grid grid-cols-4 justify-items-center gap-2 lg:flex lg:justify-start lg:gap-4'
+      >
+        {
+          socialLinks.map(link => {
+            const IconComponent = getIcon(link.icon as any);
+            return (
+              <div class='tooltip tooltip-top' data-tip={link.label}>
+                <a
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='btn btn-circle btn-primary lg:btn-ghost'
+                  aria-label={link.label}
+                >
+                  <IconComponent class='size-6' />
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+</section>

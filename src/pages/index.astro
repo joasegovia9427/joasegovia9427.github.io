@@ -1,22 +1,57 @@
 ---
-import Counter from '../components/Counter';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+// import Timeline from '../components/Timeline.astro';
+// import Projects from '../components/Projects.astro';
+// import Hackathons from '../components/Hackathons.astro';
+// import Contact from '../components/Contact.astro';
+// import { Briefcase, GraduationCap } from '@lucide/astro';
 ---
 
-<html lang='en'>
-  <head>
-    <meta charset='utf-8' />
-    <link rel='icon' type='image/x-icon' href='/favicon.ico' />
-    <link rel='icon' href='/favicon.ico' />
-    <meta name='viewport' content='width=device-width' />
-    <meta name='generator' content={Astro.generator} />
-    <title>Joaquin Segovia Portfolio</title>
-  </head>
-  <body
-    class='flex min-h-screen flex-col items-center justify-center bg-gray-50 p-4'
-  >
-    <h1 class='mb-8 text-4xl font-extrabold text-gray-900'>
-      Joaquin Segovia Portfolio
-    </h1>
-    <Counter client:load />
-  </body>
-</html>
+<Layout>
+  <main>
+    <!-- Hero Section (Always visible) -->
+    <Hero />
+
+    <!-- All other sections hidden on mobile -->
+
+    <About />
+
+    <!-- Projects Section -->
+    <!-- {general.showProjectsSection && <Projects />} -->
+
+    <!-- Work Experience Section -->
+    <!-- {
+        general.showWorkSection && (
+          <Timeline
+            collection='work'
+            variant='timeline'
+            color='primary'
+            icon={Briefcase}
+            sectionTitle='Work Experience'
+          />
+        )
+      } -->
+
+    <!-- Education Section -->
+    <!-- {
+        general.showEducationSection && (
+          <Timeline
+            collection='education'
+            variant='list'
+            color='secondary'
+            backgroundColor='base-300'
+            icon={GraduationCap}
+            sectionTitle='Education'
+          />
+        )
+      } -->
+
+    <!-- Hackathons Section -->
+    <!-- {general.showHackathonsSection && <Hackathons />} -->
+
+    <!-- Contact Section -->
+    <!-- {general.showContactSection && <Contact />} -->
+  </main>
+</Layout>

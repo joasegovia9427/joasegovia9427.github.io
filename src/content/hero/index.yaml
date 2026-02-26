@@ -1,0 +1,22 @@
+name: Joaquin Segovia
+title: Software Engineer, Full-Stack Developer, and a problem solver.
+description: >-
+  I build professional-grade products through technical excellence, engineering best practices, and a holistic product vision, aligned with business goals and user needs. I blend expertise in web technologies with UI/UX principles and Design Thinking to deliver solutions that drive value. I don't just write code, but I take ownership of the end-to-end user experience.
+avatar: '@assets/hero/avatar.png'
+location: 🇺🇾 Based in Montevideo, Uruguay, working globally.
+socialLinks:
+  - url: mailto:joasegovia9427@gmail.com
+    icon: Email
+    label: Email
+  - url: https://github.com/joasegovia9427
+    icon: GitHub
+    label: GitHub
+  - url: https://linkedin.com/in/joaquinsegovia
+    icon: LinkedIn
+    label: LinkedIn
+  - url: https://www.youtube.com/playlist?list=PL2dq_pIVanOA9tDSCewx7Vaz9aholVPW-
+    icon: YouTube
+    label: YouTube
+  - url: https://www.figma.com/@joasegovia9427
+    icon: Figma
+    label: Figma

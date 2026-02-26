@@ -1,0 +1,52 @@
+---
+import { Plus } from '@lucide/astro';
+import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+
+// Load About singleton
+const aboutEntry = await getEntry('about', 'index');
+const AboutContent = aboutEntry ? (await render(aboutEntry)).Content : null;
+
+if (!aboutEntry || !AboutContent) {
+  throw new Error('About entry not found');
+}
+
+const { title, photo, link } = aboutEntry.data;
+---
+
+<section id='about' class='px-4 py-20'>
+  <div class='mx-auto max-w-3xl'>
+    <div class='card card-side bg-base-200 shadow-sm'>
+      {
+        photo && (
+          <figure class='w-40 shrink-0'>
+            {typeof photo === 'string' ? (
+              <img src={photo} alt={title} />
+            ) : (
+              <Image src={photo} alt={title} />
+            )}
+          </figure>
+        )
+      }
+      <div class='card-body'>
+        <h2 class='card-title text-2xl'>{title}</h2>
+        <article
+          class='prose prose-sm prose-a:text-primary prose-a:underline prose-a:hover:opacity-80 max-w-none'
+        >
+          <AboutContent />
+        </article>
+        {
+          link && (
+            <div class='card-actions justify-end'>
+              <div class='tooltip' data-tip='More about me'>
+                <a href={link} target='_blank' class='btn btn-primary'>
+                  <Plus class='size-5' />
+                </a>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

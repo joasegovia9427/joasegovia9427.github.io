@@ -2,15 +2,19 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "astro",
+    "Empresa",
     "eslint",
+    "Hackathons",
     "joasegovia",
+    "nvm",
+    "nvmrc",
     "pnpm",
+    "squircle",
     "tailwindcss",
     "tsconfig",
-    "Vite",
-    "nvmrc",
-    "nvm",
-    "astro"
+    "Universidad",
+    "Vite"
   ],
   "ignorePaths": [
     "node_modules",
