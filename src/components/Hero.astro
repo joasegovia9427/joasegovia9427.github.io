@@ -37,7 +37,7 @@ const { name, title, location, description, socialLinks, avatar } =
   <button
     type='button'
     id='hero-video-sound'
-    class='btn btn-circle btn-ghost pointer-events-auto absolute top-12 right-2 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both]'
+    class='btn btn-circle btn-ghost pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:text-black'
     aria-label='Unmute video'
     title='Toggle sound'
   >
@@ -70,7 +70,10 @@ const { name, title, location, description, socialLinks, avatar } =
       updateIcons();
     }
   </script>
-  <div class='hero-content max-w-7xl flex-col lg:flex-row-reverse'>
+
+  <div
+    class='hero-content light:bg-gray-100/80 max-w-7xl flex-col rounded-lg bg-gray-900/80 p-5 backdrop-blur-sm lg:flex-row-reverse'
+  >
     <div
       class='hover-3d animate-[fadeInToDown_1.4s_ease-out_0s_both] lg:animate-[fadeInToLeft_1.4s_ease-out_0s_both]'
     >
@@ -125,16 +128,13 @@ const { name, title, location, description, socialLinks, avatar } =
         duration={1.6}
       />
       <div
-        class='grid animate-[fadeInToUp_3.6s_ease-out_1s_both] grid-cols-5 justify-items-center gap-2 lg:flex lg:justify-start lg:gap-4'
+        class='grid animate-[fadeInToUp_1.6s_ease-out_1s_both] grid-cols-5 justify-items-center gap-2 lg:flex lg:justify-start lg:gap-4'
       >
         {
           socialLinks.map(link => {
             const IconComponent = getIcon(link.icon as any);
             return (
-              <div
-                class='tooltip tooltip-top animate-[fadeInToUp_0.6s_ease-out_0s_both]'
-                data-tip={link.label}
-              >
+              <div class='tooltip tooltip-top' data-tip={link.label}>
                 <a
                   href={link.url}
                   target='_blank'

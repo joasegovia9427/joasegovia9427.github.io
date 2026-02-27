@@ -2,7 +2,9 @@
 // Theme toggle component for switching between light and dark modes
 ---
 
-<label class='swap swap-rotate'>
+<label
+  class='swap swap-rotate btn btn-circle btn-ghost pointer-events-auto rounded-full text-white hover:text-black'
+>
   <input
     type='checkbox'
     class='theme-controller'
@@ -58,7 +60,10 @@
     if (target.classList.contains('theme-controller')) {
       const theme = target.checked ? darkThemeName : lightThemeName;
       document.documentElement.setAttribute('data-theme', theme);
-      document.documentElement.classList.toggle('dark', theme === darkThemeName);
+      document.documentElement.classList.toggle(
+        'dark',
+        theme === darkThemeName,
+      );
       localStorage.setItem('theme', theme);
     }
   });
