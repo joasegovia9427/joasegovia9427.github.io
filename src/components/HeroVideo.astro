@@ -1,5 +1,6 @@
 ---
 import { Volume2, VolumeX, Play, Pause } from '@lucide/astro';
+import HeroDotDistortion from './HeroDotDistortion.astro';
 
 interface Props {
   /** Video URL (string or Astro imported asset with .src) */
@@ -14,10 +15,12 @@ const videoSrc = typeof src === 'string' ? src : src.src;
   class='pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden dark:opacity-20'
   style='opacity: 1;'
 >
-  <div
+  <!-- <div
     class='absolute h-full w-full bg-[url(@assets/hero/overlayPixel.png)] bg-repeat opacity-10'
   >
-  </div>
+  </div> -->
+
+  <HeroDotDistortion />
 
   <video
     id='hero-video'
@@ -35,7 +38,7 @@ const videoSrc = typeof src === 'string' ? src : src.src;
 <button
   type='button'
   id='hero-video-sound'
-  class='btn btn-circle btn-ghost btn-hero-hover pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
+  class='btn btn-circle btn-ghost btn-hero-hover light:text-black pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
   aria-label='Unmute video'
   title='Toggle sound'
 >
@@ -49,7 +52,7 @@ const videoSrc = typeof src === 'string' ? src : src.src;
 <button
   type='button'
   id='hero-video-play-pause'
-  class='btn btn-circle btn-ghost btn-hero-hover pointer-events-auto absolute top-25 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
+  class='btn btn-circle btn-ghost btn-hero-hover light:text-black pointer-events-auto absolute top-25 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
   aria-label='Play/Pause video'
   title='Play/Pause video'
 >
