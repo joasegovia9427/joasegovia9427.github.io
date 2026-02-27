@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import { Volume2, VolumeX } from '@lucide/astro';
 import { getIcon } from '../utils/iconMapper';
 import { getEntry } from 'astro:content';
 import { BlurFadeText } from './ui/blur-fade-text';
+import HeroVideo from './HeroVideo.astro';
 import heroBackgroundVideo from '@assets/hero/hero_background_video.mp4';
 
 const heroEntry = await getEntry('hero', 'index');
@@ -17,60 +17,7 @@ const { name, title, location, description, socialLinks, avatar } =
 ---
 
 <section class='hero min-h-screen'>
-  <div
-    class='pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden dark:opacity-20'
-    style='opacity: 1;'
-  >
-    <video
-      id='hero-video'
-      autoplay
-      loop
-      playsinline
-      muted
-      class='h-full w-full object-cover dark:[mask-image:radial-gradient(circle_at_center,white,transparent)]'
-      aria-label='Decorative background video'
-    >
-      <source src={heroBackgroundVideo} type='video/mp4' />
-      <track kind='captions' src='' srclang='en' label='English' />
-    </video>
-  </div>
-  <button
-    type='button'
-    id='hero-video-sound'
-    class='btn btn-circle btn-ghost pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
-    aria-label='Unmute video'
-    title='Toggle sound'
-  >
-    <span id='icon-muted'>
-      <Volume2 class='size-5' aria-hidden='true' />
-    </span>
-    <span id='icon-unmuted' class='hidden'>
-      <VolumeX class='size-5' aria-hidden='true' />
-    </span>
-  </button>
-  <script>
-    const video = document.getElementById(
-      'hero-video',
-    ) as HTMLVideoElement | null;
-    const btn = document.getElementById('hero-video-sound');
-    const iconMuted = document.getElementById('icon-muted');
-    const iconUnmuted = document.getElementById('icon-unmuted');
-    if (video && btn && iconMuted && iconUnmuted) {
-      function updateIcons() {
-        const isMuted = video!.muted;
-        iconMuted!.classList.toggle('hidden', !isMuted);
-        iconUnmuted!.classList.toggle('hidden', isMuted);
-      }
-      btn.addEventListener('click', () => {
-        const v = video;
-        v.muted = !v.muted;
-        btn.setAttribute('aria-label', v.muted ? 'Unmute video' : 'Mute video');
-        updateIcons();
-      });
-      updateIcons();
-    }
-  </script>
-
+  <HeroVideo src={heroBackgroundVideo} />
   <div
     class='hero-content light:bg-gray-100/80 max-w-7xl flex-col rounded-lg bg-gray-900/80 p-5 backdrop-blur-sm lg:flex-row-reverse'
   >
