@@ -11,12 +11,15 @@ import About from '../components/About.astro';
 
 <Layout>
   <main>
-    <!-- Hero Section (Always visible) -->
-    <Hero />
+    <!-- Hero Section: sticky so it stays in place while About slides over it -->
+    <div class='sticky top-0 z-0 w-full'>
+      <Hero />
+    </div>
 
-    <!-- All other sections hidden on mobile -->
-
-    <About />
+    <!-- About Section: sits in normal flow above the sticky hero, slides over it on scroll -->
+    <div class='relative z-10 -mt-0'>
+      <About />
+    </div>
 
     <!-- Projects Section -->
     <!-- {general.showProjectsSection && <Projects />} -->
