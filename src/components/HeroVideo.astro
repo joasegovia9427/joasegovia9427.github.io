@@ -1,5 +1,5 @@
 ---
-import { Volume2, VolumeX } from '@lucide/astro';
+import { Volume2, VolumeX, Play, Pause } from '@lucide/astro';
 
 interface Props {
   /** Video URL (string or Astro imported asset with .src) */
@@ -41,25 +41,65 @@ const videoSrc = typeof src === 'string' ? src : src.src;
     <VolumeX class='size-5' aria-hidden='true' />
   </span>
 </button>
+<button
+  type='button'
+  id='hero-video-play-pause'
+  class='btn btn-circle btn-ghost btn-hero-hover pointer-events-auto absolute top-25 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
+  aria-label='Play/Pause video'
+  title='Play/Pause video'
+>
+  <span id='icon-play'>
+    <Play class='size-5' aria-hidden='true' />
+  </span>
+  <span id='icon-pause' class='hidden'>
+    <Pause class='size-5' aria-hidden='true' />
+  </span>
+</button>
 <script>
   const video = document.getElementById(
     'hero-video',
   ) as HTMLVideoElement | null;
-  const btn = document.getElementById('hero-video-sound');
+  const btnSound = document.getElementById('hero-video-sound');
+  const btnPlayPause = document.getElementById('hero-video-play-pause');
   const iconMuted = document.getElementById('icon-muted');
   const iconUnmuted = document.getElementById('icon-unmuted');
-  if (video && btn && iconMuted && iconUnmuted) {
+  const iconPlay = document.getElementById('icon-play');
+  const iconPause = document.getElementById('icon-pause');
+
+  if (video && btnSound && iconMuted && iconUnmuted) {
     function updateIcons() {
       const isMuted = video!.muted;
       iconMuted!.classList.toggle('hidden', !isMuted);
       iconUnmuted!.classList.toggle('hidden', isMuted);
     }
-    btn.addEventListener('click', () => {
+    btnSound.addEventListener('click', () => {
       const v = video;
       v.muted = !v.muted;
-      btn.setAttribute('aria-label', v.muted ? 'Unmute video' : 'Mute video');
+      btnSound.setAttribute(
+        'aria-label',
+        v.muted ? 'Unmute video' : 'Mute video',
+      );
       updateIcons();
     });
     updateIcons();
+  }
+
+  if (video && btnPlayPause && iconPlay && iconPause) {
+    function updateIconsPlayPause() {
+      const isPlaying = !video!.paused;
+      iconPlay!.classList.toggle('hidden', isPlaying);
+      iconPause!.classList.toggle('hidden', !isPlaying);
+    }
+    btnPlayPause.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+      updateIconsPlayPause();
+    });
+    video.addEventListener('play', updateIconsPlayPause);
+    video.addEventListener('pause', updateIconsPlayPause);
+    updateIconsPlayPause();
   }
 </script>
