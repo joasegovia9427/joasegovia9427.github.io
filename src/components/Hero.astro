@@ -37,7 +37,7 @@ const { name, title, location, description, socialLinks, avatar } =
   <button
     type='button'
     id='hero-video-sound'
-    class='btn btn-circle btn-ghost pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:text-black'
+    class='btn btn-circle btn-ghost pointer-events-auto absolute top-15 right-3 z-10 animate-[fadeInToLeft_1.6s_ease-out_0s_both] text-white hover:bg-gray-100/80 hover:text-black'
     aria-label='Unmute video'
     title='Toggle sound'
   >
@@ -139,7 +139,7 @@ const { name, title, location, description, socialLinks, avatar } =
                   href={link.url}
                   target='_blank'
                   rel='noopener noreferrer'
-                  class='btn btn-circle btn-primary lg:btn-ghost'
+                  class='btn btn-circle btn-primary lg:btn-ghost hover:bg-gray-100/80 hover:text-gray-900'
                   aria-label={link.label}
                 >
                   <IconComponent class='size-6' />
