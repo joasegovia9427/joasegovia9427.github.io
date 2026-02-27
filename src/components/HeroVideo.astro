@@ -1,5 +1,6 @@
 ---
 import { Volume2, VolumeX, Play, Pause } from '@lucide/astro';
+import overlayVideo from '@assets/hero/overlayPixel.png';
 
 interface Props {
   /** Video URL (string or Astro imported asset with .src) */
@@ -14,6 +15,11 @@ const videoSrc = typeof src === 'string' ? src : src.src;
   class='pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden dark:opacity-20'
   style='opacity: 1;'
 >
+  <div
+    class='absolute h-full w-full bg-[url(@assets/hero/overlayPixel.png)] bg-repeat opacity-10'
+  >
+  </div>
+
   <video
     id='hero-video'
     autoplay
@@ -55,6 +61,7 @@ const videoSrc = typeof src === 'string' ? src : src.src;
     <Pause class='size-5' aria-hidden='true' />
   </span>
 </button>
+
 <script>
   const video = document.getElementById(
     'hero-video',
