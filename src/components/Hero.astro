@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { getIcon } from '../utils/iconMapper';
 import { getEntry } from 'astro:content';
+import { BlurFadeText } from './ui/blur-fade-text';
 
 const heroEntry = await getEntry('hero', 'index');
 
@@ -15,7 +16,9 @@ const { name, title, location, description, socialLinks, avatar } =
 
 <section class='hero min-h-screen'>
   <div class='hero-content max-w-7xl flex-col lg:flex-row-reverse'>
-    <div class='hover-3d'>
+    <div
+      class='hover-3d animate-[fadeInToDown_1.4s_ease-out_0s_both] lg:animate-[fadeInToLeft_1.4s_ease-out_0s_both]'
+    >
       <figure class='mask mask-squircle w-48 max-w-100 lg:w-64'>
         {
           typeof avatar === 'string' ? (
@@ -30,24 +33,53 @@ const { name, title, location, description, socialLinks, avatar } =
     </div>
 
     <div class='max-w-2xl text-center lg:text-left'>
-      <h1 class='mb-4 text-4xl font-bold lg:text-5xl'>
-        Hi, I'm {name}
-      </h1>
-      <p class='skeleton skeleton-text text-base-content/80 mb-2 text-xl'>
-        {title}
-      </p>
-      {location && <p class='text-base-content/60 mb-4'>{location}</p>}
-      <p class='mb-6 text-lg leading-relaxed'>
-        {description}
-      </p>
+      <BlurFadeText
+        client:load
+        as='h1'
+        text={`Hi, I'm ${name}`}
+        className='mb-4 text-4xl font-bold lg:text-5xl'
+        delay={0.3}
+        duration={1.4}
+      />
+      <BlurFadeText
+        client:load
+        as='p'
+        text={title}
+        className='skeleton skeleton-text text-base-content/80 mb-2 text-xl'
+        delay={0.4}
+        duration={1.5}
+      />
+      {
+        location && (
+          <BlurFadeText
+            client:load
+            as='p'
+            text={location}
+            className='text-base-content/60 mb-4'
+            delay={0.5}
+            duration={1.5}
+          />
+        )
+      }
+      <BlurFadeText
+        client:load
+        as='p'
+        text={description}
+        className='mb-6 text-lg leading-relaxed'
+        delay={location ? 0.45 : 0.3}
+        duration={1.6}
+      />
       <div
-        class='grid grid-cols-5 justify-items-center gap-2 lg:flex lg:justify-start lg:gap-4'
+        class='grid animate-[fadeInToUp_3.6s_ease-out_1s_both] grid-cols-5 justify-items-center gap-2 lg:flex lg:justify-start lg:gap-4'
       >
         {
           socialLinks.map(link => {
             const IconComponent = getIcon(link.icon as any);
             return (
-              <div class='tooltip tooltip-top' data-tip={link.label}>
+              <div
+                class='tooltip tooltip-top animate-[fadeInToUp_0.6s_ease-out_0s_both]'
+                data-tip={link.label}
+              >
                 <a
                   href={link.url}
                   target='_blank'
