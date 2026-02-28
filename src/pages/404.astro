@@ -4,7 +4,7 @@ import { House, FolderOpen } from '@lucide/astro';
 ---
 
 <Layout
-  title='404 - Page Not Found | Bloomfolio'
+  title='404 - Page Not Found | Joaquin Segovia Portfolio'
   description="The page you're looking for doesn't exist."
 >
   <div class='flex min-h-screen items-center justify-center px-4 py-20'>
@@ -13,7 +13,7 @@ import { House, FolderOpen } from '@lucide/astro';
       <h1 class='text-primary mb-4 animate-pulse text-9xl font-bold'>404</h1>
 
       <!-- Error Title -->
-      <h2 class='mb-4 text-4xl font-bold'>🥀 Page Not Found</h2>
+      <h2 class='mb-4 text-4xl font-bold'>Page Not Found</h2>
 
       <!-- Error Description -->
       <p class='text-base-content/70 mb-8 text-xl'>
@@ -30,9 +30,9 @@ import { House, FolderOpen } from '@lucide/astro';
           <House class='size-5' />
           Go Home
         </a>
-        <a href='/#projects' class='btn btn-outline gap-2'>
+        <a href='/experience' class='btn btn-outline gap-2'>
           <FolderOpen class='size-5' />
-          View Projects
+          View Experience
         </a>
       </div>
 
@@ -42,14 +42,11 @@ import { House, FolderOpen } from '@lucide/astro';
           You might be looking for:
         </p>
         <div class='flex flex-wrap justify-center gap-3 text-sm'>
-          <a href='/blog' class='link link-hover'>Blog</a>
-          <span class='text-base-content/30'>•</span>
           <a href='/#about' class='link link-hover'>About</a>
           <span class='text-base-content/30'>•</span>
-          <a
-            href='/blog/guides/bloomfolio-complete-guide'
-            class='link link-hover'>Documentation</a
-          >
+          <a href='/experience' class='link link-hover'>Experience</a>
+          <span class='text-base-content/30'>•</span>
+          <a href='/projects' class='link link-hover'>Projects</a>
         </div>
       </div>
     </div>
