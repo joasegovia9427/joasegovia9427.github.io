@@ -1,0 +1,44 @@
+---
+/**
+ * CSS-only blur-fade text for hero. No React/motion — better LCP and TBT.
+ */
+interface Props {
+  as?: 'h1' | 'p' | 'span';
+  text: string;
+  className?: string;
+  /** Delay in seconds before animation starts */
+  delay?: number;
+  /** Duration in seconds */
+  duration?: number;
+}
+
+const { as: Tag = 'span', text, className = '', delay = 0, duration = 0.5 } = Astro.props;
+const delayMs = Math.round(delay * 1000);
+const durationMs = Math.round(duration * 1000);
+---
+
+<Tag
+  class={`blur-fade-text ${className}`}
+  style={`--blur-fade-delay: ${delayMs}ms; --blur-fade-duration: ${durationMs}ms;`}
+>
+  {text}
+</Tag>
+
+<style>
+  .blur-fade-text {
+    opacity: 0;
+    filter: blur(10px);
+    animation: blur-fade-in var(--blur-fade-duration) cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      var(--blur-fade-delay) forwards;
+  }
+  @keyframes blur-fade-in {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+</style>

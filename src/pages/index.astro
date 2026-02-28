@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+// import Timeline from '../components/Timeline.astro';
+// import Projects from '../components/Projects.astro';
+// import Hackathons from '../components/Hackathons.astro';
+// import Contact from '../components/Contact.astro';
+// import { Briefcase, GraduationCap } from '@lucide/astro';
+---
+
+<Layout>
+  <main>
+    <!-- Hero Section: sticky so it stays in place while About slides over it -->
+    <div class='sticky top-0 z-0 w-full'>
+      <Hero />
+    </div>
+
+    <!-- About Section: sits in normal flow above the sticky hero, slides over it on scroll -->
+    <div class='relative z-10 -mt-0'>
+      <About />
+    </div>
+
+    <!-- Projects Section -->
+    <!-- {general.showProjectsSection && <Projects />} -->
+
+    <!-- Work Experience Section -->
+    <!-- {
+        general.showWorkSection && (
+          <Timeline
+            collection='work'
+            variant='timeline'
+            color='primary'
+            icon={Briefcase}
+            sectionTitle='Work Experience'
+          />
+        )
+      } -->
+
+    <!-- Education Section -->
+    <!-- {
+        general.showEducationSection && (
+          <Timeline
+            collection='education'
+            variant='list'
+            color='secondary'
+            backgroundColor='base-300'
+            icon={GraduationCap}
+            sectionTitle='Education'
+          />
+        )
+      } -->
+
+    <!-- Hackathons Section -->
+    <!-- {general.showHackathonsSection && <Hackathons />} -->
+
+    <!-- Contact Section -->
+    <!-- {general.showContactSection && <Contact />} -->
+  </main>
+</Layout>

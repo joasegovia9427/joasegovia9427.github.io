@@ -1,0 +1,266 @@
+---
+interface Props {
+  /** Spacing between dot centers in pixels */
+  dotGap?: number;
+  /** Dot radius in pixels */
+  dotSize?: number;
+  /** Dot fill color (CSS color) */
+  dotColor?: string;
+  /** Glow color (CSS color) */
+  glowColor?: string;
+  /** Mouse influence radius in pixels */
+  mouseRadius?: number;
+  /** How strongly the cursor pushes dots (0–1 typical) */
+  distortionStrength?: number;
+  /** Spring return speed (higher = faster snap back) */
+  returnSpeed?: number;
+  /** Damping for velocity (0–1, lower = more bouncy) */
+  damping?: number;
+  /** Speed of random pulse/twinkle */
+  pulseSpeed?: number;
+  /** Max extra glow intensity for pulse (0–1) */
+  pulseAmount?: number;
+  /** Base glow radius in pixels */
+  glowRadius?: number;
+}
+
+const {
+  dotGap = 10,
+  dotSize = 0.5,
+  dotColor = '#0057FF',
+  glowColor = '#0042c2',
+  mouseRadius = 120,
+  distortionStrength = 0.35,
+  returnSpeed = 0.02,
+  damping = 0.92,
+  pulseSpeed = 0.8,
+  pulseAmount = 0.6,
+  glowRadius = 1,
+} = Astro.props;
+---
+
+<div
+  class='dot-distortion pointer-events-auto absolute inset-0 hidden h-full w-full sm:block'
+  data-dot-gap={dotGap}
+  data-dot-size={dotSize}
+  data-dot-color={dotColor}
+  data-glow-color={glowColor}
+  data-mouse-radius={mouseRadius}
+  data-distortion-strength={distortionStrength}
+  data-return-speed={returnSpeed}
+  data-damping={damping}
+  data-pulse-speed={pulseSpeed}
+  data-pulse-amount={pulseAmount}
+  data-glow-radius={glowRadius}
+  aria-hidden='true'
+>
+  <canvas class='h-full w-full' id='dot-distortion-canvas'></canvas>
+</div>
+
+<script>
+  (function () {
+    const container = document.querySelector('.dot-distortion');
+    const canvas = document.getElementById(
+      'dot-distortion-canvas',
+    ) as HTMLCanvasElement | null;
+    if (!container || !canvas) return;
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    type Dot = {
+      origX: number;
+      origY: number;
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      brightness: number;
+      glow: number;
+      pulseOffset: number;
+    };
+
+    let dots: Dot[] = [];
+    let mouseX = -1e6;
+    let mouseY = -1e6;
+    let animationId: number;
+    let rafTime = 0;
+
+    function getNumber(key: string, fallback: number): number {
+      const v = container!.getAttribute(`data-${key}`);
+      if (v === null) return fallback;
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function getString(key: string, fallback: string): string {
+      const v = container!.getAttribute(`data-${key}`);
+      return v !== null ? v : fallback;
+    }
+
+    function initDots(): void {
+      const gap = getNumber('dot-gap', 28);
+      const width = canvas!.width;
+      const height = canvas!.height;
+      dots = [];
+      const cols = Math.ceil(width / gap) + 1;
+      const rows = Math.ceil(height / gap) + 1;
+      const offsetX = (width - (cols - 1) * gap) / 2;
+      const offsetY = (height - (rows - 1) * gap) / 2;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const origX = offsetX + i * gap;
+          const origY = offsetY + j * gap;
+          dots.push({
+            origX,
+            origY,
+            x: origX,
+            y: origY,
+            vx: 0,
+            vy: 0,
+            brightness: 0.7 + Math.random() * 0.3,
+            glow: 0.3 + Math.random() * 0.4,
+            pulseOffset: Math.random() * Math.PI * 2,
+          });
+        }
+      }
+    }
+
+    function resize(): void {
+      const dpr = Math.min(window.devicePixelRatio ?? 1, 2);
+      const rect = container!.getBoundingClientRect();
+      const w = Math.round(rect.width * dpr);
+      const h = Math.round(rect.height * dpr);
+      if (canvas!.width !== w || canvas!.height !== h) {
+        canvas!.width = w;
+        canvas!.height = h;
+        canvas!.style.width = `${rect.width}px`;
+        canvas!.style.height = `${rect.height}px`;
+        ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+        initDots();
+      }
+    }
+
+    const onMouseMove = (e: Event): void => {
+      const ev = e as MouseEvent;
+      const rect = container!.getBoundingClientRect();
+      const scaleX = canvas!.width / rect.width;
+      const scaleY = canvas!.height / rect.height;
+      mouseX = (ev.clientX - rect.left) * scaleX;
+      mouseY = (ev.clientY - rect.top) * scaleY;
+    };
+
+    const onPointerLeave = (): void => {
+      mouseX = -1e6;
+      mouseY = -1e6;
+    };
+
+    function tick(t: number): void {
+      rafTime = t * 0.001;
+      const width = canvas!.width;
+      const height = canvas!.height;
+      const mouseRadiusVal = getNumber('mouse-radius', 120);
+      const strength = getNumber('distortion-strength', 0.35);
+      const returnSpeedVal = getNumber('return-speed', 0.02);
+      const dampingVal = getNumber('damping', 0.92);
+      const pulseSpeedVal = getNumber('pulse-speed', 0.8);
+      const pulseAmountVal = getNumber('pulse-amount', 0.6);
+
+      for (const d of dots) {
+        const dx = d.x - mouseX;
+        const dy = d.y - mouseY;
+        const dist = Math.hypot(dx, dy);
+        if (dist < mouseRadiusVal && dist > 0) {
+          const f = (1 - dist / mouseRadiusVal) * strength;
+          const nx = dx / dist;
+          const ny = dy / dist;
+          d.vx += nx * f * 4;
+          d.vy += ny * f * 4;
+        }
+        d.vx += (d.origX - d.x) * returnSpeedVal;
+        d.vy += (d.origY - d.y) * returnSpeedVal;
+        d.vx *= dampingVal;
+        d.vy *= dampingVal;
+        d.x += d.vx;
+        d.y += d.vy;
+        d.glow =
+          0.3 +
+          0.4 * d.brightness +
+          pulseAmountVal *
+            Math.max(0, Math.sin(rafTime * pulseSpeedVal + d.pulseOffset));
+      }
+
+      const dotColorVal = getString('dot-color', '#0057FF');
+      const glowColorVal = getString('glow-color', '#0042c2');
+      const dotSizeVal = getNumber('dot-size', 1.2);
+      const glowRadiusVal = getNumber('glow-radius', 8);
+
+      const setAlpha = (rgba: string, a: number): string => {
+        const m = rgba.match(/rgba?\(([^)]+)\)/);
+        if (!m) return rgba;
+        const parts = m[1].split(',').map(s => s.trim());
+        const rgb = parts.slice(0, 3).join(',');
+        return `rgba(${rgb},${a})`;
+      };
+
+      ctx!.clearRect(0, 0, width, height);
+      for (const d of dots) {
+        const r = glowRadiusVal * d.glow;
+        const gradient = ctx!.createRadialGradient(d.x, d.y, 0, d.x, d.y, r);
+        gradient.addColorStop(0, setAlpha(glowColorVal, d.glow * 0.6));
+        gradient.addColorStop(0.5, setAlpha(glowColorVal, d.glow * 0.2));
+        gradient.addColorStop(1, 'transparent');
+        ctx!.fillStyle = gradient;
+        ctx!.beginPath();
+        ctx!.arc(d.x, d.y, r, 0, Math.PI * 2);
+        ctx!.fill();
+        ctx!.fillStyle = dotColorVal;
+        ctx!.beginPath();
+        ctx!.arc(d.x, d.y, dotSizeVal, 0, Math.PI * 2);
+        ctx!.fill();
+      }
+
+      animationId = requestAnimationFrame(tick);
+    }
+
+    function start(): void {
+      resize();
+      animationId = requestAnimationFrame(tick);
+      container!.addEventListener('mousemove', onMouseMove, { passive: true });
+      container!.addEventListener('pointerleave', onPointerLeave, {
+        passive: true,
+      });
+      window.addEventListener('resize', resize);
+    }
+
+    function stop(): void {
+      cancelAnimationFrame(animationId);
+      container!.removeEventListener('mousemove', onMouseMove);
+      container!.removeEventListener('pointerleave', onPointerLeave);
+      window.removeEventListener('resize', resize);
+    }
+
+    const runWhenIdle =
+      typeof requestIdleCallback !== 'undefined'
+        ? requestIdleCallback
+        : (cb: () => void) => setTimeout(cb, 1);
+    runWhenIdle(() => start());
+
+    const observer = new ResizeObserver(() => resize());
+    observer.observe(container!);
+
+    document.addEventListener('astro:before-swap', stop);
+    window.addEventListener('beforeunload', stop);
+
+    container!.addEventListener(
+      'astro:unload',
+      () => {
+        stop();
+        observer.disconnect();
+        document.removeEventListener('astro:before-swap', stop);
+        window.removeEventListener('beforeunload', stop);
+      },
+      { once: true },
+    );
+  })();
+</script>

@@ -1,0 +1,102 @@
+---
+import { Plus } from '@lucide/astro';
+import { Image } from 'astro:assets';
+import landscape from '@assets/about/landscape.png';
+import photo from '@assets/about/photo.png';
+import { LinkPreview } from './ui/link-preview';
+
+const title = 'About Me';
+---
+
+<section id='about' class='overflow-y-hidden py-20 backdrop-blur-sm'>
+  <div class='mx-auto max-w-3xl px-5 lg:px-0'>
+    <div class='card card-side bg-base-200 shadow-sm'>
+      <figure class='hidden w-40 shrink-0 lg:block'>
+        <Image
+          src={photo}
+          alt={title}
+          width={160}
+          height={160}
+          loading='lazy'
+          decoding='async'
+        />
+      </figure>
+
+      <div class='card-body'>
+        <figure class='-mt-12 mb-4 w-full lg:hidden'>
+          <Image
+            src={landscape}
+            alt='Landscape'
+            width={800}
+            height={450}
+            loading='lazy'
+            decoding='async'
+            class='w-full rounded-t-lg object-cover'
+          />
+        </figure>
+        <h2 class='animate-[fadeInToLeft_1.6s_ease-out_1s_both] text-2xl'>
+          {title}
+        </h2>
+        <article
+          class='prose prose-sm prose-a:text-primary prose-a:underline prose-a:hover:opacity-80 max-w-none animate-[fadeInToLeft_2.6s_ease-out_1s_both]'
+        >
+          <p>
+            💻 I'm a Software Developer (Full Stack, Frontend-oriented) and I
+            use web technologies to build outstanding products.
+          </p>
+          <p>
+            🎯 I focus on building professional-quality software by applying
+            technical expertise and core principles of Software Engineering. I
+            also prioritize soft skills to ensure smooth collaboration. I enjoy
+            taking ownership of the projects I work on, not just writing code,
+            but maintaining a holistic and critical view of the product, end
+            users, functionality, and business goals.
+          </p>
+          <p>
+            🎓 I earned my Bachelor’s Degree in Software Engineering at
+            "Universidad de la Empresa," featuring my Thesis project:
+            <LinkPreview
+              client:visible
+              url='https://joasegovia9427.github.io/jasform-web/'
+              className='font-bold text-white!'
+            >
+              JASForm
+            </LinkPreview>
+          </p>
+          <p>
+            ⚙️ I have experience in Software Engineering (Architecture, Design
+            Patterns, Development Models, Versioning, and Automation). My
+            technical stack includes JavaScript, TypeScript, HTML, CSS (React,
+            Angular), relational databases (SQL), design and prototyping (e.g.,
+            Figma), Agile Development, and the full software development
+            lifecycle.
+          </p>
+          <p>
+            🔬 Additionally, I am self-taught and passionate about topics such
+            as UI, UX, Multimedia, Graphics, Marketing, Designing, Product
+            Building, and Design Thinking.
+          </p>
+          <p>
+            When I'm not coding, I'm probably enjoying a cup of coffee ☕,
+            traveling ✈️, listening to music 🎵 to relax, or practicing some
+            dancing 🕺.
+          </p>
+        </article>
+
+        <div class='card-actions justify-end'>
+          <div class='tooltip' data-tip='More about me on LinkedIn'>
+            <a
+              href={'https://linkedin.com/in/joaquinsegovia'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-primary'
+              aria-label='More about me on LinkedIn'
+            >
+              <Plus class='size-5' />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
