@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { getIcon } from '../utils/iconMapper';
 import { getEntry } from 'astro:content';
-import { BlurFadeText } from './ui/blur-fade-text';
+import BlurFadeTextCSS from './BlurFadeTextCSS.astro';
 import HeroVideo from './HeroVideo.astro';
 import heroBackgroundVideo from '@assets/hero/hero_background_video.mp4';
 
@@ -25,30 +25,32 @@ const { name, title, location, description, socialLinks, avatar } =
     <div
       class='hover-3d animate-[fadeInToDown_1.4s_ease-out_0s_both] lg:animate-[fadeInToLeft_1.4s_ease-out_0s_both]'
     >
-      <figure class='mask mask-squircle w-32 max-w-100 sm:w-48 lg:w-64'>
-        {
-          typeof avatar === 'string' ? (
-            <img src={avatar} alt={name} />
-          ) : (
-            <Image src={avatar} alt={name} />
-          )
-        }
+      <figure
+        class='mask mask-squircle w-32 max-w-100 sm:w-48 lg:w-64'
+        style='aspect-ratio: 1;'
+      >
+        <Image
+          src={avatar}
+          alt={name}
+          width={256}
+          height={256}
+          decoding='async'
+          fetchpriority='high'
+        />
       </figure>
 
       {Array.from({ length: 8 }).map(() => <div />)}
     </div>
 
     <div class='max-w-2xl text-center lg:text-left'>
-      <BlurFadeText
-        client:load
+      <BlurFadeTextCSS
         as='h1'
         text={`Hi, I'm ${name}`}
         className='mb-4 text-2xl font-bold sm:text-4xl lg:text-5xl'
         delay={0.3}
         duration={1.4}
       />
-      <BlurFadeText
-        client:load
+      <BlurFadeTextCSS
         as='p'
         text={title}
         className='skeleton skeleton-text text-base-content/80 mb-2 text-xl'
@@ -57,8 +59,7 @@ const { name, title, location, description, socialLinks, avatar } =
       />
       {
         location && (
-          <BlurFadeText
-            client:load
+          <BlurFadeTextCSS
             as='p'
             text={location}
             className='text-base-content/60 mb-4 text-sm sm:text-base'
@@ -67,8 +68,7 @@ const { name, title, location, description, socialLinks, avatar } =
           />
         )
       }
-      <BlurFadeText
-        client:load
+      <BlurFadeTextCSS
         as='p'
         text={description}
         className='mb-6 text-base leading-relaxed sm:text-lg'

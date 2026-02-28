@@ -12,21 +12,25 @@ const title = 'About Me';
   <div class='mx-auto max-w-3xl px-5 lg:px-0'>
     <div class='card card-side bg-base-200 shadow-sm'>
       <figure class='hidden w-40 shrink-0 lg:block'>
-        {
-          typeof photo === 'string' ? (
-            <img src={photo} alt={title} />
-          ) : (
-            <Image src={photo} alt={title} />
-          )
-        }
+        <Image
+          src={photo}
+          alt={title}
+          width={160}
+          height={160}
+          loading='lazy'
+          decoding='async'
+        />
       </figure>
 
       <div class='card-body'>
-        <!-- INSERT_YOUR_CODE -->
         <figure class='-mt-12 mb-4 w-full lg:hidden'>
           <Image
             src={landscape}
             alt='Landscape'
+            width={800}
+            height={450}
+            loading='lazy'
+            decoding='async'
             class='w-full rounded-t-lg object-cover'
           />
         </figure>
@@ -52,7 +56,7 @@ const title = 'About Me';
             🎓 I earned my Bachelor’s Degree in Software Engineering at
             "Universidad de la Empresa," featuring my Thesis project:
             <LinkPreview
-              client:load
+              client:visible
               url='https://joasegovia9427.github.io/jasform-web/'
               className='font-bold text-white!'
             >
@@ -84,7 +88,9 @@ const title = 'About Me';
             <a
               href={'https://linkedin.com/in/joaquinsegovia'}
               target='_blank'
+              rel='noopener noreferrer'
               class='btn btn-primary'
+              aria-label='More about me on LinkedIn'
             >
               <Plus class='size-5' />
             </a>

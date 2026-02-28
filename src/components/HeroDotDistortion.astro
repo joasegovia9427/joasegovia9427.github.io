@@ -240,7 +240,11 @@ const {
       window.removeEventListener('resize', resize);
     }
 
-    start();
+    const runWhenIdle =
+      typeof requestIdleCallback !== 'undefined'
+        ? requestIdleCallback
+        : (cb: () => void) => setTimeout(cb, 1);
+    runWhenIdle(() => start());
 
     const observer = new ResizeObserver(() => resize());
     observer.observe(container!);
